@@ -41,29 +41,37 @@ function Navbar(props) {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <HealingOutlinedIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+          <Box
+            justifyContent="center"
+            alignItems="center"
             sx={{
-              mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              ":hover": {
+                cursor: "pointer",
+              },
             }}
             onClick={() => {
               navigate("/");
             }}
           >
-            KMA
-          </Typography>
+            <HealingOutlinedIcon sx={{ display: { xs: "none", md: "flex" } }} />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              KMA
+            </Typography>
+          </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -83,13 +91,13 @@ function Navbar(props) {
                 vertical: "bottom",
                 horizontal: "left",
               }}
-              keepMounted
               transformOrigin={{
                 vertical: "top",
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={() => {
+                handleCloseNavMenu();
                 navigate("/");
               }}
               sx={{
@@ -112,27 +120,44 @@ function Navbar(props) {
               })}
             </Menu>
           </Box>
-          <HealingOutlinedIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-          />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+          <Box
+            alignItems="center"
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              display: { xs: "flex", md: "none" },
+              ":hover": {
+                cursor: "pointer",
+              },
+            }}
+            onClick={() => {
+              navigate("/");
             }}
           >
-            KMA
-          </Typography>
+            <HealingOutlinedIcon
+              sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+                ":hover": {
+                  cursor: "pointer",
+                },
+              }}
+            >
+              KMA
+            </Typography>
+          </Box>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => {
               const pageContent = pagesLinks[index];
@@ -183,7 +208,7 @@ function Navbar(props) {
                       navigate(`/${settingContent}`);
                     }}
                   >
-                    <Typography textAlign="center">{setting}</Typography>
+                    {setting}
                   </MenuItem>
                 );
               })}
